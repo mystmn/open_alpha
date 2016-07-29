@@ -1,0 +1,9 @@
+venv/
+db/
+.idea/*
+.openshift/*
+.project/*
+.__pycache__/*
+*.pyc
+*.pyo
+
