@@ -1,31 +1,29 @@
-from flask import Flask, render_template, url_for
-from models import account_holder
+from flask import Flask, render_template
+import helpers, models, controllers, os
 
 app = Flask(__name__)
+
+config = {
+    'rootPath': os.path.dirname(os.path.realpath(__file__)),
+}
 
 
 @app.route('/')
 def default():
-    account_holder.insert_account_holder("pcameron52@gmail.com", "mystmn", "6142162858", "pacman")
+    controllers.account_holder()
+    models.account_holder.insert_account_holder("ghost@gmail.com", "mystmn", "6142162858", "pacman")
     return render_template('default.html')
 
 
 @app.route('/contacts', methods=['GET'])
 def contact():
-    entries = account_holder.select_account_holder((), 4)
+    entries = models.account_holder.select_account_holder()
     return render_template('contacts.html', entries=entries)
 
 
 @app.context_processor
 def inject_dict_for_all_templates():
-    return dict(mydict=menu())
-
-
-def menu():
-    return {
-        'Contact Us': '.contact',
-        'Home': '.default',
-    }
+    return dict(mydict=helpers.menu())
 
 
 if __name__ == '__main__':

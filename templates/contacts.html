@@ -1,13 +1,11 @@
 {% extends "layout.html" %}
 {% block body %}
 <div class=".container">
-
     {% for entry in entries %}
     <div class="row">
         <div class="col-xs-2">{{entry[0]}}</div>
         <div class="col-xs-2">{{entry[1]}}</div>
     </div>
     {% endfor %}
-
 </div>
 {% endblock %}

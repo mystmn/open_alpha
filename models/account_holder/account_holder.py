@@ -10,7 +10,6 @@ conn = {
     'desc': 'ORDER BY {} DESC'.format('id'),  # SELECT * FROM tablename ORDER BY column DESC LIMIT 1;
 }
 
-
 def insert_account_holder(email, username, phone, password):
     with sql.connect(conn['db']) as con:
         con.cursor().execute(
